@@ -2,4 +2,4 @@
   hosts: all
   tasks:
     - name: Run PowerShell Script
-    win_command: powershell.exe -ExecutionPolicy ByPass -File D:/Test.ps1
+       win_command: powershell.exe -ExecutionPolicy ByPass -File D:/Test.ps1
