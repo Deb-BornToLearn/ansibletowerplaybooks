@@ -1,5 +1,8 @@
-- name: Run remote PowerShell Script
+--- 
+- 
   hosts: all
-  tasks:
-    - name: Run PowerShell Script
-       win_command: powershell.exe -ExecutionPolicy ByPass -File D:/Test.ps1
+  name: "Run remote PowerShell Script"
+  tasks: 
+    - 
+      name: "Run PowerShell Script"
+      win_command: "powershell.exe -ExecutionPolicy ByPass -File D:/Test.ps1"
