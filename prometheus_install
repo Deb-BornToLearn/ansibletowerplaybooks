@@ -1,0 +1,28 @@
+- hosts: LabPrometheus
+  tasks:
+  - name: make sure Prometheus directory exists
+    win_file:
+      path: D:\Prometheus
+      state: directory
+  - name: make sure prometheus service directory exists
+    win_file:
+      path: D:\Prometheus\Service
+      state: directory
+  - name: make sure prometheus log directory exists
+    win_file:
+      path: D:\Prometheus\Logs
+      state: directory
+  - name: transfer prometheusexporter executable
+    win_copy:
+      src: /etc/ansible/assets/prometheus/prometheus_exporter.exe
+      dest: D:\Prometheus\Service\prometheus_exporter.exe
+  - name: transfer prometheusexporter config
+    win_copy:
+      src: /etc/ansible/assets/prometheus/config.json
+      dest: D:\Prometheus\Service\config.json
+  - name: run prometheusexporter to install
+    raw: D:\Prometheus\Service\prometheus_exporter.exe --startup auto install
+  - name: Verify status of prometheus service
+    win_service:
+      name: PrometheusExporter
+      state: started
